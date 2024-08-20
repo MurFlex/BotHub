@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: 'db'
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - ./backup/:/backup/
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - '5438:5432'
+
+  frontend:
+    build: ./client
+    container_name: 'frontend'
+    env_file:
+      - ./client/.env
+    ports:
+      - '25555:25555'
+    command: yarn dev
+    volumes:
+      - ./client:/app
+      - '/app/node_modules'
+
+volumes:
+  pgdata:
