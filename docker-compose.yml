@@ -24,6 +24,25 @@ services:
     volumes:
       - ./client:/app
       - '/app/node_modules'
+    depends_on:
+      - backend
+
+  backend:
+    image: backend
+    build:
+      context: ./server
+    env_file:
+      - ./server/.env
+    container_name: 'backend'
+    ports:
+      - 25556:25556
+    command: yarn dev
+    restart: unless-stopped
+    volumes:
+      - ./server/:/app/
+      - /app/node_modules
+    depends_on:
+      - db
 
 volumes:
   pgdata:

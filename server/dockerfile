@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:lts-alpine as build
 
 WORKDIR /app
 
@@ -8,8 +8,4 @@ RUN yarn install
 
 COPY . .
 
-RUN npx prisma generate
-
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+EXPOSE 25556
