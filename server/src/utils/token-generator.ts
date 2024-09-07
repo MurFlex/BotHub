@@ -1,13 +1,12 @@
 import jwt, { JwtPayload } from 'jsonwebtoken'
 
-const SECRET_KEY = 'your-secret-key'
-
-interface TokenPayload {
+export interface TokenPayload extends JwtPayload {
 	userId: Number
 }
 
+// TODO: Нужно эти длительности вывести куда-то в общее место с AuthController, в cookie приходится передавать число, а в JWT генератор строку, нужно подумать, как свести это к одному способу взаимодействия, возможно сделать функцию, которая примет TokenValidityTypes и вернет сумму, мб сделать парсер строки
 export enum TokenValidityTypes {
-	RefreshToken = '7d',
+	RefreshToken = '30d',
 	AccessToken = '1h',
 }
 
