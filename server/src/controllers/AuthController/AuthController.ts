@@ -10,18 +10,44 @@ const SALT_ROUNDS = 10 // TODO: Вывести в какой-нибудь кон
 class AuthController extends AbstractController {
 	public login = asyncHandler(
 		async (req: Request, res: Response): Promise<void> => {
-			bcrypt
-				.compare(
-					'test',
-					'$2b$10$VxEWBFo5Q7Isj1J930BalOPu6/yFbLrXws7TIrkdoqyoj6sHptew2' // encrypted 'test'
-				)
-				.then(result => {
-					if (result) {
-						this.sendSuccess(res, { result: 'good' })
-					} else {
-						this.sendError(res, 'Password is incorrect')
-					}
-				})
+			const { email, password } = req.body
+
+			const user = await UserModel.getUserByEmail(email)
+
+			if (!user) {
+				this.sendError(res, 'User not found')
+				return
+			}
+
+			const isPasswordValid = await bcrypt.compare(password, user.password)
+
+			if (!isPasswordValid) {
+				this.sendError(res, 'Password is invalid')
+				return
+			}
+
+			const tokens = getTokenPair(user.id)
+
+			await UserModel.updateUser({
+				...user,
+				refresh_token: tokens.refreshToken,
+			})
+
+			res.cookie('access_token', tokens.accessToken, {
+				// TODO: Вынести в utils
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 60 * 60 * 1000, // 60 минут
+			})
+
+			res.cookie('refresh_token', tokens.refreshToken, {
+				// TODO: Вынести в utils
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 30 * 24 * 60 * 60 * 1000, // 30 дней
+			})
+
+			this.sendSuccess(res, { message: 'Success' })
 		}
 	)
 
@@ -49,6 +75,20 @@ class AuthController extends AbstractController {
 			user = await UserModel.updateUser({
 				...user,
 				refresh_token: tokens.refreshToken,
+			})
+
+			res.cookie('access_token', tokens.accessToken, {
+				// TODO: Вынести в utils
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 60 * 60 * 1000, // 60 минут
+			})
+
+			res.cookie('refresh_token', tokens.refreshToken, {
+				// TODO: Вынести в utils
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 30 * 24 * 60 * 60 * 1000, // 30 дней
 			})
 
 			this.sendSuccess(res, { ...user, access_token: tokens.accessToken })

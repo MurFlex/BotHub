@@ -4,7 +4,7 @@ import { AbstractModel } from './AbstractModel'
 class UserModel extends AbstractModel {
 	private model = this.prisma.user
 
-	public async getUserById(id: number): Promise<IUser | null> {
+	public async getUserById(id: Number): Promise<IUser | null> {
 		return await this.model.findFirst({
 			where: {
 				id: id,
