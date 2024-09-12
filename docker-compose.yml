@@ -50,7 +50,8 @@ services:
     container_name: 'backend'
     ports:
       - 25556:25556
-    command: yarn dev
+    entrypoint: /bin/sh
+    command: -c "npx prisma migrate dev && yarn dev"
     restart: unless-stopped
     volumes:
       - ./server/:/app/
