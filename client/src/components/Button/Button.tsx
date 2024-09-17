@@ -1,10 +1,30 @@
+import cn from 'classnames'
 import { FC } from 'react'
+import styles from './Button.module.scss'
+import { ButtonProps } from './Button.props'
 
-export interface ButtonProps extends HTMLButtonElement {
-	label: string
-	onClick: () => void
+const Button: FC<ButtonProps> = ({
+	children,
+	className,
+	isLoading = false,
+	appearance = 'default',
+	...props
+}) => {
+	return (
+		<button
+			className={cn(
+				styles['button'],
+				styles[appearance],
+				{
+					[styles['loading']]: isLoading, // TODO: Добавить лоадер после выполнения BH-8
+				},
+				className
+			)}
+			{...props}
+		>
+			{children}
+		</button>
+	)
 }
 
-export const Button: FC<ButtonProps> = ({ label, onClick }) => {
-	return <button onClick={onClick}> {label} </button>
-}
+export default Button

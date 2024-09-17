@@ -1,23 +1,32 @@
-import { Meta, composeStory } from '@storybook/react'
-import { Button, ButtonProps } from '../components/Button/Button'
+import { composeStory, Meta } from '@storybook/react'
+import Button from '../components/Button/Button'
+import { ButtonProps } from '../components/Button/Button.props'
 
 export default {
 	title: 'Example/Button',
 	component: Button,
+	args: {
+		children: 'Button',
+		isLoading: false,
+		appearance: 'default',
+	},
+	argTypes: {
+		appearance: {
+			options: ['default', 'accent'],
+			control: { type: 'select' },
+		},
+		isLoading: {
+			control: 'boolean',
+		},
+	},
 } as Meta<typeof Button>
 
-const Template = (args: ButtonProps) => <Button {...args} />
+// TODO: Сделать обертку
 
-export const Primary = composeStory(Template, {
-	args: {
-		label: 'Click Me!',
-		onClick: () => alert('Button Clicked!'),
-	},
-})
+const Template = (args: ButtonProps) => (
+	<div style={{ width: '200px' }}>
+		<Button {...args}>{args.children}</Button>
+	</div>
+)
 
-export const Secondary = composeStory(Template, {
-	args: {
-		label: 'Click Me!',
-		onClick: () => alert('Button Clicked!'),
-	},
-})
+export const Changable = composeStory(Template, {})
