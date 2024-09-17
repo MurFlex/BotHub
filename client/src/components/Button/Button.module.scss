@@ -1,6 +1,6 @@
 .button {
 	width: 100%;
-	font-family: 'Inter', sans-serif;
+	font-family: inherit;
 	font-size: 16px;
 	padding: 7px 15px;
 	border-radius: 8px;
@@ -10,14 +10,14 @@
 }
 
 .default:hover {
-	color: #852876;
+	color: #852876; // TODO: Вынести в переменную
 }
 
 .accent {
 	color: white;
-	background-color: #852876;
+	background-color: #852876; // TODO: Вынести в переменную
 }
 
 .accent:hover {
-	background-color: #5d145f;
+	background-color: #5d145f; // TODO: Вынести в переменную
 }
