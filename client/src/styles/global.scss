@@ -5,3 +5,15 @@
 * {
 	font-family: $main-font;
 }
+
+.test {
+	font-size: 36px;
+
+	@include mq('md') {
+		font-size: 24px;
+	}
+
+	@include mq('sm') {
+		font-size: 16px;
+	}
+}

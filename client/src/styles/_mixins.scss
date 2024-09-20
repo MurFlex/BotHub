@@ -1,4 +1,17 @@
-// test
-@mixin body-text() {
-	color: $text;
+@mixin mq($breakpoint) {
+	$max-width: map-get($breakpoints, $breakpoint);
+
+	@if $max-width {
+		$media-type: if(
+			$breakpoint == 'sm' or $breakpoint == 'md',
+			'screen',
+			'all'
+		);
+
+		@media #{$media-type} and (max-width: $max-width) {
+			@content;
+		}
+	} @else {
+		@warn "Breakpoint не найден";
+	}
 }

@@ -5,16 +5,8 @@ export default defineConfig({
 	plugins: [react()],
 	resolve: {
 		alias: {
-			'@': '/src'
-		}
-	},
-	// TODO: Костыль для сторибука, надо позже найти решение
-	css: {
-		preprocessorOptions: {
-			scss: {
-				additionalData: '@import "@/styles/global.scss";'
-			}
-		}
+			'@': '/src',
+		},
 	},
 	server: {
 		watch: {
