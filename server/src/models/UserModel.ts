@@ -1,8 +1,20 @@
-import { IUser, IUserCreate, IUserUpdate } from '../types/user.interface'
+import {
+	IUser,
+	IUserCreate,
+	IUserResponse,
+	IUserUpdate,
+} from '../types/user.interface'
 import { AbstractModel } from './AbstractModel'
 
 class UserModel extends AbstractModel {
 	private model = this.prisma.user
+
+	public formatUserForResponse(user: IUser): IUserResponse {
+		const { password, createdAt, updatedAt, refresh_token, ...formattedUser } =
+			user
+
+		return formattedUser
+	}
 
 	public async getUserById(id: Number): Promise<IUser | null> {
 		return await this.model.findFirst({

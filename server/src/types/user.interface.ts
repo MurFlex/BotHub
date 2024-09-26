@@ -17,7 +17,13 @@ export interface IUserCreate {
 export interface IUserUpdate extends Omit<IUser, 'createdAt, updatedAt'> {}
 
 export interface IUserSearch {
-	id?: number
+	id?: Number
+	email?: string
+	name?: string
+}
+
+export interface IUserResponse {
+	id?: Number
 	email?: string
 	name?: string
 }

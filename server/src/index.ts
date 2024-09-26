@@ -1,6 +1,7 @@
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import express, { Express, Request, Response } from 'express'
+import authMiddleware from './middleware/auth.middleware'
 import { errorHandler } from './middleware/error.middleware'
 import prisma from './prisma'
 import AuthRoutes from './routes/AuthRoutes'
@@ -17,6 +18,11 @@ async function main() {
 	app.use(errorHandler)
 
 	app.use('/auth/', AuthRoutes)
+
+	// protected test
+	app.get('/protected/', authMiddleware, (req: Request, res: Response) => {
+		res.json(req.user)
+	})
 
 	app.get('/health-check/', (req: Request, res: Response) => {
 		res.send('Heathy!')

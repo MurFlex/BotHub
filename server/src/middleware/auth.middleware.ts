@@ -1,30 +1,82 @@
 import { NextFunction, Request, Response } from 'express'
-import asyncHandler from 'express-async-handler'
 import jwt from 'jsonwebtoken'
 import UserModel from '../models/UserModel'
-import { TokenPayload } from '../utils/token-generator'
+import { getTokenPair, TokenPayload } from '../utils/token-generator'
 
-export const auth = asyncHandler(
-	async (req: Request, res: Response, next: NextFunction) => {
-		const token = req.headers.authorization?.split(' ')[1]
-		const secret = process.env.SECRET_KEY
+const authMiddleware = async (
+	req: Request,
+	res: Response,
+	next: NextFunction
+) => {
+	try {
+		const accessToken = req.headers.authorization?.split(' ')[1]
 
-		if (!secret) {
-			throw new Error('Secret must be defined')
+		if (!accessToken) {
+			return res.status(401).json({ message: 'No access token provided' })
 		}
 
-		if (!token) {
-			res.status(401)
-			throw new Error('Необходима авторизация')
-		}
+		const decoded = jwt.verify(
+			accessToken,
+			process.env.SECRET_KEY!
+		) as TokenPayload
 
-		const decodedToken = jwt.verify(token, secret) as TokenPayload
-
-		const user = UserModel.getUserById(decodedToken.userId)
+		const user = await UserModel.getUserById(decoded.userId)
 
 		if (user) {
-			req.user = user
+			req.user = UserModel.formatUserForResponse(user)
 			next()
 		}
+	} catch (err: any) {
+		if (err.name === 'TokenExpiredError') {
+			const refreshToken = req.cookies.refresh_token
+			if (!refreshToken) {
+				return res.status(401).json({ message: 'Ошибка токена' })
+			}
+
+			try {
+				const decodedRefresh = jwt.verify(
+					refreshToken,
+					process.env.SECRET_KEY!
+				) as TokenPayload
+
+				const userId = decodedRefresh.userId
+
+				const user = await UserModel.getUserById(userId)
+
+				if (!user || user.refresh_token !== refreshToken) {
+					// TODO: Нужно сделать таблицу с токенами, сделать крон на удаление невалидных токенов, чтобы один аккаунт мог иметь несколько токенов, т.к. человек может зайти с разных устройств
+					return res.status(403).json({ message: 'Ошибка токена' }) // TODO: Нужно вывести эту ошибку
+				}
+
+				const tokens = getTokenPair(userId)
+
+				await UserModel.updateUser({
+					...user,
+					refresh_token: tokens.refreshToken,
+				})
+
+				// TODO: Вынести в utils
+				res.setHeader('Authorization', `Bearer ${tokens.accessToken}`)
+
+				res.cookie('refresh_token', tokens.refreshToken, {
+					sameSite: 'strict',
+					secure: process.env.NODE_ENV === 'production',
+					httpOnly: true,
+					maxAge: 30 * 24 * 60 * 60 * 1000, // 30 дней
+				})
+
+				if (user) {
+					req.user = UserModel.formatUserForResponse(user)
+					return next()
+				}
+			} catch (refreshError) {
+				return res.status(403).json(refreshError)
+			}
+		} else {
+			return res.status(403).json({ message: 'Ошибка токена' })
+		}
+		res.json(err)
 	}
-)
+}
+
+export default authMiddleware
