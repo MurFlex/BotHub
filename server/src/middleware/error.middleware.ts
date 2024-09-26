@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
+import AbstractException from '../exceptions/AbstractException'
 
 export const notFound = (req: Request, res: Response, next: NextFunction) => {
 	const error = new Error(`Not found`)
@@ -13,7 +14,7 @@ export const errorHandler = (
 	res: Response,
 	next: NextFunction
 ) => {
-	const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+	const statusCode = err instanceof AbstractException ? err.statusCode : 500
 
 	res.status(statusCode)
 	res.json({
