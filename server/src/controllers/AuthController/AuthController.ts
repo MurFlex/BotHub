@@ -12,7 +12,12 @@ class AuthController extends AbstractController {
 		async (req: Request, res: Response): Promise<void> => {
 			const { email, password } = req.body
 
-			const user = await UserModel.getUserByEmail(email)
+			if (!email || !password) {
+				this.sendError(res, 'Email and password have to be provided')
+				return
+			}
+
+			let user = await UserModel.getUserByEmail(email)
 
 			if (!user) {
 				this.sendError(res, 'User not found')
@@ -28,26 +33,21 @@ class AuthController extends AbstractController {
 
 			const tokens = getTokenPair(user.id)
 
-			await UserModel.updateUser({
+			user = await UserModel.updateUser({
 				...user,
 				refresh_token: tokens.refreshToken,
 			})
 
-			res.cookie('access_token', tokens.accessToken, {
-				// TODO: Вынести в utils
-				sameSite: 'strict',
-				secure: process.env.NODE_ENV === 'production',
-				maxAge: 60 * 60 * 1000, // 60 минут
-			})
+			// TODO: Вынести в utils
+			res.setHeader('Authorization', `Bearer ${tokens.accessToken}`)
 
 			res.cookie('refresh_token', tokens.refreshToken, {
-				// TODO: Вынести в utils
 				sameSite: 'strict',
 				secure: process.env.NODE_ENV === 'production',
 				maxAge: 30 * 24 * 60 * 60 * 1000, // 30 дней
 			})
 
-			this.sendSuccess(res, { message: 'Success' })
+			this.sendSuccess(res, UserModel.formatUserForResponse(user))
 		}
 	)
 
@@ -77,21 +77,16 @@ class AuthController extends AbstractController {
 				refresh_token: tokens.refreshToken,
 			})
 
-			res.cookie('access_token', tokens.accessToken, {
-				// TODO: Вынести в utils
-				sameSite: 'strict',
-				secure: process.env.NODE_ENV === 'production',
-				maxAge: 60 * 60 * 1000, // 60 минут
-			})
+			// TODO: Вынести в utils
+			res.setHeader('Authorization', `Bearer ${tokens.accessToken}`)
 
 			res.cookie('refresh_token', tokens.refreshToken, {
-				// TODO: Вынести в utils
 				sameSite: 'strict',
 				secure: process.env.NODE_ENV === 'production',
 				maxAge: 30 * 24 * 60 * 60 * 1000, // 30 дней
 			})
 
-			this.sendSuccess(res, { ...user, access_token: tokens.accessToken })
+			this.sendSuccess(res, UserModel.formatUserForResponse(user))
 		}
 	)
 }
