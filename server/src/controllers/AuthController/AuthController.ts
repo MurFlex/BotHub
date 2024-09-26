@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt'
 import { Request, Response } from 'express'
 import asyncHandler from 'express-async-handler'
+import BadRequestException from '../../exceptions/BadRequestException'
+import NotFoundException from '../../exceptions/NotFoundException'
 import UserModel from '../../models/UserModel'
 import { getTokenPair } from '../../utils/token-generator'
 import { AbstractController } from '../AbstractController'
@@ -13,22 +15,19 @@ class AuthController extends AbstractController {
 			const { email, password } = req.body
 
 			if (!email || !password) {
-				this.sendError(res, 'Email and password have to be provided')
-				return
+				throw new BadRequestException()
 			}
 
 			let user = await UserModel.getUserByEmail(email)
 
 			if (!user) {
-				this.sendError(res, 'User not found')
-				return
+				throw new NotFoundException()
 			}
 
 			const isPasswordValid = await bcrypt.compare(password, user.password)
 
 			if (!isPasswordValid) {
-				this.sendError(res, 'Password is invalid')
-				return
+				throw new BadRequestException()
 			}
 
 			const tokens = getTokenPair(user.id)
