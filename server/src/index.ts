@@ -2,7 +2,7 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import express, { Express, Request, Response } from 'express'
 import authMiddleware from './middleware/auth.middleware'
-import { errorHandler } from './middleware/error.middleware'
+import { errorHandler, notFound } from './middleware/error.middleware'
 import prisma from './prisma'
 import AuthRoutes from './routes/AuthRoutes'
 
@@ -15,7 +15,6 @@ async function main() {
 
 	app.use(cookieParser())
 	app.use(express.json())
-	app.use(errorHandler)
 
 	app.use('/auth/', AuthRoutes)
 
@@ -27,6 +26,9 @@ async function main() {
 	app.get('/health-check/', (req: Request, res: Response) => {
 		res.send('Heathy!')
 	})
+
+	app.use(notFound)
+	app.use(errorHandler)
 
 	app.listen(port, () => {
 		console.log(`[server]: Server is running at http://localhost:${port}`)
