@@ -5,10 +5,10 @@ import { InputProps } from "./Input.props";
 
 const Input: FC<InputProps> = ({text, name, placeholder}) => {
   return (
-    <label className={styles.label}>
-    <p className={styles.p}> {text} </p>
-    <input className={styles.input} name={name} placeholder={placeholder}/>
-    </label>
+    <>
+      <label className={styles.label} htmlFor={name}>{text}</label>
+      <input id={name} className={styles.input} name={name} placeholder={placeholder} />
+    </>
   );
 };
 

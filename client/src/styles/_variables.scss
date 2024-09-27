@@ -6,3 +6,20 @@ $breakpoints: (
 	'lg': 992px,
 	'xl': 1200px,
 );
+
+$colors: (
+	'white': #fff,
+	'black': #000,
+	'indigo-dark': #191d3a,
+	'gray-light': #9393a0,
+	'purple-grade': #852876,
+);
+
+
+// TEXT
+$text: var(--lb-white);
+$text_accent: var(--lb-purple-grade);
+
+//borders
+$border: var(--lb-gray-light);
+$border_accent: var(--lb-purple-grade);
