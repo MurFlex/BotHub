@@ -2,6 +2,12 @@
 @import 'mixins.scss';
 @import 'fonts.scss';
 
+:root {
+	@each $name, $color in $colors {
+	  --lb-#{$name}: #{$color};
+	}
+}  
+
 * {
 	font-family: $main-font;
 	box-sizing: border-box;

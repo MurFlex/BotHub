@@ -1,0 +1,33 @@
+
+.label {
+    display: block;
+    margin: 0 0 4px;
+    padding: 4px;
+}
+
+.input {
+    display: block;
+    font-family: $main-font;
+    font-size: inherit;
+    line-height: inherit;
+    min-height: 40px;
+    margin: 0;
+    padding: 2px 16px;
+    color: $text_input;
+    border: $border_input;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.input::placeholder {
+    color: $text_grey;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus-visible {
+    outline: none;
+    border: $border_accent;
+}
