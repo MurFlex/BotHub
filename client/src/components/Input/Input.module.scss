@@ -7,15 +7,20 @@
 
 .input {
     display: block;
-    font-family: var(main-font);
+    font-family: $main-font;
     font-size: inherit;
     line-height: inherit;
-    height: 40px;
+    min-height: 40px;
     margin: 0;
     padding: 2px 16px;
-    border: 2px solid var(border); 
+    color: $text_input;
+    border: $border_input;
     border-radius: 10px;
     transition: transform 0.3s;
+}
+
+.input::placeholder {
+    color: $text_grey;
 }
 
 .input:focus {
@@ -24,5 +29,5 @@
 
 .input:focus-visible {
     outline: none;
-    border: 2px solid var(border_accent);
+    border: $border_accent;
 }
