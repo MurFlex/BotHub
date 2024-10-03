@@ -8,6 +8,13 @@ export default defineConfig({
 			'@': '/src',
 		},
 	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: '@import "@/styles/global.scss";',
+			},
+		},
+	},
 	server: {
 		watch: {
 			usePolling: true,
