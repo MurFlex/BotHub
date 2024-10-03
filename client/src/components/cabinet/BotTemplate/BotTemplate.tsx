@@ -3,7 +3,7 @@ import { BotTemplateProps } from './types.ts'
 import styles from './BotTemplate.module.scss'
 import cn from 'classnames'
 
-const BotTemplate: FC<BotTemplateProps> = ({ image, text, isNew}) => {
+const BotTemplate: FC<BotTemplateProps> = ({ image, text, isNew }) => {
     if(isNew) {
         return <div className={styles.template}>
             <div className={styles.create}>

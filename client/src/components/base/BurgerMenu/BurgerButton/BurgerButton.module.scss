@@ -1,0 +1,34 @@
+
+.accordion_icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.open {
+  transform: rotate(180deg);
+}
+
+.accordion_container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.accordion_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.accordion_content {
+  padding: 10px;
+  background-color: white;
+}
+
+.svg {
+  width: 15px;
+  height: 15px;
+}

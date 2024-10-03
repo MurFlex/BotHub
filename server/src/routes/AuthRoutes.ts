@@ -13,4 +13,8 @@ router.get('/check-email', validationMiddleware(checkEmailValidation), AuthContr
 
 router.get('/refresh-token', AuthController.refreshToken)
 
+router.get('/check-email', AuthController.checkEmailFree)
+
+router.get('/refresh-token', AuthController.refreshToken)
+
 export default router

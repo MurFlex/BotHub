@@ -11,11 +11,15 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  color: black;
+}
+
+.dropdown__label:hover {
   color: $text_accent;
+  cursor: default;
 }
 
 .dropdown__list {
-  position: absolute;
   display: none;
   margin: 0;
   float: inline-start;
@@ -26,15 +30,20 @@
   border: $dropdown_border_accent;
   border-radius: 16px;
   min-width: 160px;
+  background-color: white;
 }
 
 .dropdown__padding {
   padding-top: 10px;
   display: none;
+  position: absolute;
 }
 
 
-.dropdown:hover .dropdown__list, .dropdown__padding {
+.dropdown:hover .dropdown__list {
   display: block;
 }
 
+.dropdown:hover .dropdown__padding {
+  display: block;
+}
