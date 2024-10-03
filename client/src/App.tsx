@@ -1,6 +1,5 @@
-import '@/styles/global.scss'
 import { FC } from 'react'
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import AppRoutes from './routes'
 import store from './store'
 import { loadStore } from './store/storeLoader'
