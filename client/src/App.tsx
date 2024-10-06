@@ -1,14 +1,14 @@
 import '@/styles/global.scss'
-import Button from './components/Button/Button'
-import Loader from './components/Loader/Loader'
+import { FC } from 'react'
+import { Provider } from 'react-redux'
+import AppRoutes from './routes'
+import store from './store'
 
-function App() {
+const App: FC = () => {
 	return (
-		<div className='test'>
-			<Button appearance='accent'>
-				<Loader />
-			</Button>
-		</div>
+		<Provider store={store}>
+			<AppRoutes />
+		</Provider>
 	)
 }
 
