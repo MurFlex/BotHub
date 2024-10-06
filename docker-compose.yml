@@ -36,7 +36,7 @@ services:
       - ./client/.env
     ports:
       - '25555:25555'
-    command: yarn dev
+    command: /bin/sh -c "yarn install && yarn dev"
     volumes:
       - ./client:/app
       - '/app/node_modules'
@@ -48,7 +48,7 @@ services:
   storybook:
     build: ./client
     container_name: 'storybook'
-    command: yarn storybook --no-open
+    command: /bin/sh -c "yarn install && yarn storybook --no-open"
     ports:
       - 6006:6006
     volumes:
@@ -69,7 +69,7 @@ services:
     ports:
       - 25556:25556
     entrypoint: /bin/sh
-    command: -c "npx prisma migrate dev && yarn dev"
+    command: -c "yarn install && npx prisma migrate dev && yarn dev"
     restart: unless-stopped
     volumes:
       - ./server/:/app/
