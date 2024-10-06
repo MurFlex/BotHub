@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '../store'
-import { logout, setAccessToken } from '../store/authSlice'
+import { login, logout } from '../store/authSlice'
 
 const ApiRequest = axios.create({
 	baseURL: '/api',
@@ -29,7 +29,7 @@ ApiRequest.interceptors.response.use(
 
 			localStorage.setItem('accessToken', accessToken)
 
-			store.dispatch(setAccessToken(accessToken))
+			store.dispatch(login(accessToken))
 		}
 
 		return response

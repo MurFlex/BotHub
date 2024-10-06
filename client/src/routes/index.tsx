@@ -1,5 +1,6 @@
-import { FC, lazy, Suspense } from 'react'
+import { FC, lazy } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Login from '../pages/Login'
 import PrivateRoute from './PrivateRoute'
 
 const Home = lazy(() => import('../pages/Home'))
@@ -9,20 +10,19 @@ const Profile = lazy(() => import('../pages/Profile'))
 const AppRoutes: FC = () => {
 	return (
 		<Router>
-			<Suspense fallback={<div>Загрузка</div>}>
-				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route
-						path='/profile'
-						element={
-							<PrivateRoute>
-								<Profile />
-							</PrivateRoute>
-						}
-					/>
-					<Route path='*' element={<NotFound />} />
-				</Routes>
-			</Suspense>
+			<Routes>
+				{/* Публичные роуты */}
+				<Route path='/' element={<Home />} />
+				<Route path='/login/' element={<Login />} />
+
+				{/* Защищенные роуты */}
+				<Route path='/cabinet/*' element={<PrivateRoute />}>
+					<Route path='' element={<Profile />} />
+				</Route>
+
+				{/* Остальные роуты */}
+				<Route path='*' element={<NotFound />} />
+			</Routes>
 		</Router>
 	)
 }

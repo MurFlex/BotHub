@@ -1,6 +1,9 @@
+import ApiRequest from '../../configs/ApiRequest'
+
 class AuthApi {
 	public async login() {
-		return { accessToken: 'test' }
+		// временный пока нет страницы авторизации
+		return await ApiRequest.get('auth/getAccessToken')
 	}
 }
 
