@@ -8,15 +8,13 @@ import { IItem } from "./MenuItem/MenuItem.props.ts";
 const DropdownMenu: FC<IDropdownMenuProps> = ({ label, items }) => {
   return (
     <div className={styles.dropdown}>
-      <p className={styles.dropdown__label}>{label}</p>
+      <span className={styles.dropdown__label}>{label}</span>
       <div className={styles.dropdown__padding}>
-      <nav className={styles.dropdown__menu}>
-        <ul className={styles.dropdown_list}>
+        <ul className={styles.dropdown__list}>
           {items.map((item: IItem) => (
-            <MenuItem item={item}></MenuItem>
+            <MenuItem item={item} />
           ))}
         </ul>
-      </nav>
       </div>
     </div>
   );

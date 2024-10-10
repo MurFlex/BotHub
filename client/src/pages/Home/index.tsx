@@ -1,9 +1,9 @@
 import { FC } from "react";
 import DropdownMenu from "../../components/DropdownMenu/DropdownMenu";
-import { IItems } from "../../components/DropdownMenu/DropdownMenu.props";
+import { IItem } from "../../components/DropdownMenu/MenuItem/MenuItem.props";
 
 const Home: FC = () => {
-  const items: IItems[] = [
+  const items: IItem[] = [
     { label: "Home", value: '/home' },
     { label: "Login", value: '/login' },
     { label: "Cabinet", value: '/cabinet' },
