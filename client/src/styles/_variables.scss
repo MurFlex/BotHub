@@ -13,6 +13,7 @@ $colors: (
 	'indigo-dark': #191d3a,
 	'gray-light': #9393a0,
 	'purple-grade': #852876,
+	'pale-pinkish': #E7D4E4,
 );
 
 
@@ -25,3 +26,9 @@ $text_grey: var(--lb-gray-light);
 //borders
 $border_input: 2px solid var(--lb-gray-light);
 $border_accent: 2px solid var(--lb-purple-grade);
+
+// background dropdown
+$dropdown_background_clr: var(--lb-pale-pinkish);
+$dropdown_border_accent: 1px solid var(--lb-purple-grade);
+
+

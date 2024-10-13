@@ -1,0 +1,40 @@
+
+.dropdown {
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.dropdown__label {
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $text_accent;
+}
+
+.dropdown__list {
+  position: absolute;
+  display: none;
+  margin: 0;
+  float: inline-start;
+  font-family: $main-font;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 22px 25px;
+  border: $dropdown_border_accent;
+  border-radius: 16px;
+  min-width: 160px;
+}
+
+.dropdown__padding {
+  padding-top: 10px;
+  display: none;
+}
+
+
+.dropdown:hover .dropdown__list, .dropdown__padding {
+  display: block;
+}
+
