@@ -1,6 +1,6 @@
 import { FC, lazy } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import Login from '../pages/Login'
+import Login from '../pages/Auth'
 import PrivateRoute from './PrivateRoute'
 
 const Home = lazy(() => import('../pages/Home'))
@@ -14,6 +14,7 @@ const AppRoutes: FC = () => {
 				{/* Публичные роуты */}
 				<Route path='/' element={<Home />} />
 				<Route path='/login/' element={<Login />} />
+				<Route path='/register/' element={<Login />} />
 
 				{/* Защищенные роуты */}
 				<Route path='/cabinet/*' element={<PrivateRoute />}>

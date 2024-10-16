@@ -2,10 +2,11 @@
 .label {
     display: block;
     margin: 0 0 4px;
-    padding: 4px;
+    padding: 4px 4px 4px 0;
 }
 
 .input {
+    width: 100%;
     display: block;
     font-family: $main-font;
     font-size: inherit;
