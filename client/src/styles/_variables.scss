@@ -11,7 +11,8 @@ $colors: (
 	'white': #fff,
 	'black': #000,
 	'indigo-dark': #191d3a,
-	'gray-light': #9393a0,
+	'gray-light': #E0E2E9,
+	'gray-dark': #9393A0,
 	'purple-grade': #852876,
 	'pale-pinkish': #E7D4E4,
 );
@@ -21,7 +22,7 @@ $colors: (
 $text: var(--lb-white);
 $text_input: var(--lb-indigo-dark);
 $text_accent: var(--lb-purple-grade);
-$text_grey: var(--lb-gray-light);
+$text_grey: var(--lb-gray-dark);
 
 //borders
 $border_input: 2px solid var(--lb-gray-light);
