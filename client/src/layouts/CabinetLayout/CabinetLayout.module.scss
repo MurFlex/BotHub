@@ -1,0 +1,14 @@
+.layout {
+	margin: 0 auto;
+	max-width: 1400px;
+	height: 100vh;
+	display: flex;
+}
+
+.wrap {
+	flex: 1 0 0;
+}
+
+.content {
+	padding: 24px 24px 0 24px;
+}

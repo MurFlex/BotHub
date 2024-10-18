@@ -1,0 +1,32 @@
+.header {
+	padding: 24px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.create {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	cursor: pointer;
+	color: $text_main;
+	text-decoration: none;
+
+	svg {
+		color: $svg_accent;
+	}
+}
+
+.plus {
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $background_header_plus_icon;
+	border-radius: 100%;
+}
+
+.text {
+	font-size: 14px;
+}

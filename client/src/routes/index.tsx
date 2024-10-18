@@ -1,7 +1,7 @@
 import { FC, lazy } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Login from '../pages/Auth'
-import PrivateRoute from './PrivateRoute'
+import ProtectedRoute from './ProtectedRoute'
 
 const Home = lazy(() => import('../pages/Home'))
 const NotFound = lazy(() => import('../pages/NotFound'))
@@ -17,8 +17,9 @@ const AppRoutes: FC = () => {
 				<Route path='/register/' element={<Login />} />
 
 				{/* Защищенные роуты */}
-				<Route path='/cabinet/*' element={<PrivateRoute />}>
+				<Route path='/cabinet/*' element={<ProtectedRoute />}>
 					<Route path='' element={<Profile />} />
+					<Route path='*' element={<NotFound />} />
 				</Route>
 
 				{/* Остальные роуты */}

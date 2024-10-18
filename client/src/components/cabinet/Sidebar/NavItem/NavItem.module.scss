@@ -1,0 +1,41 @@
+.link {
+	display: flex;
+	align-items: center;
+	color: $text_main;
+	text-decoration: none;
+	font-size: 16px;
+	padding: 16px;
+	width: 100%;
+	border-radius: 16px;
+	transition: padding 0.3s ease, opacity 0.3s ease, color 0.3s ease,
+		background-color 0.3s ease;
+
+	&:hover {
+		color: $text_accent;
+		background-color: $background_accent;
+	}
+
+	svg {
+		flex-shrink: 0;
+		width: 24px;
+		height: 24px;
+		transition: transform 0.3s ease;
+	}
+
+	span {
+		margin-left: 16px;
+		white-space: nowrap;
+		opacity: 1;
+		transition: opacity 0.3s ease;
+	}
+
+	.sidebarHidden & span {
+		opacity: 0;
+		margin-left: 0;
+		transition: opacity 0.3s ease, margin-left 0.3s ease;
+	}
+
+	.sidebarHidden & svg {
+		transition: none;
+	}
+}

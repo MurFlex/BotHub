@@ -1,16 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { refreshTokenThunk } from './authThunks'
 
+interface User {
+	id: number
+	email: string
+	name: string
+}
+
 interface AuthState {
 	isAuthenticated: boolean
 	accessToken: string | null
 	refreshTokenLoading: boolean
+	user: User | null
 }
 
 const initialState: AuthState = {
 	isAuthenticated: false,
 	accessToken: null,
 	refreshTokenLoading: false,
+	user: null,
 }
 
 const authSlice = createSlice({
@@ -19,7 +27,7 @@ const authSlice = createSlice({
 	reducers: {
 		login: (state, action: PayloadAction<string>) => {
 			state.isAuthenticated = true
-			state.accessToken = action.payload
+			state.accessToken = action.payload // TODO: Добавить присвоение юзера с сервера
 		},
 		logout: state => {
 			state.isAuthenticated = false
@@ -42,6 +50,7 @@ const authSlice = createSlice({
 			.addCase(refreshTokenThunk.rejected, state => {
 				state.isAuthenticated = false
 				state.accessToken = null
+				state.user = null
 				state.refreshTokenLoading = false
 			})
 	},

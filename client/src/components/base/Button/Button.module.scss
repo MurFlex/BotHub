@@ -11,14 +11,14 @@
 }
 
 .default:hover {
-	color: #852876; // TODO: Вынести в переменную
+	color: $text_accent;
 }
 
 .accent {
-	color: white;
-	background-color: #852876; // TODO: Вынести в переменную
+	color: $text;
+	background-color: $text_accent;
 }
 
 .accent:hover {
-	background-color: #5d145f; // TODO: Вынести в переменную
+	background-color: darken($text_accent, 25%);
 }
