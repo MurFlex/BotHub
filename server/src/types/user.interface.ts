@@ -1,6 +1,5 @@
 export interface IUser {
 	id: Number
-	name: string
 	email: string
 	password: string
 	refresh_token?: string
@@ -9,7 +8,6 @@ export interface IUser {
 }
 
 export interface IUserCreate {
-	name: string
 	email: string
 	password: string
 }

@@ -19,7 +19,7 @@ class UserModel extends AbstractModel {
 	public async getUserById(id: Number): Promise<IUser | null> {
 		return await this.model.findFirst({
 			where: {
-				id: id,
+				id,
 			},
 		})
 	}
@@ -27,7 +27,7 @@ class UserModel extends AbstractModel {
 	public async getUserByEmail(email: string): Promise<IUser | null> {
 		return await this.model.findFirst({
 			where: {
-				email: email,
+				email,
 			},
 		})
 	}
