@@ -21,6 +21,7 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=bothub
     volumes:
       - ./backup/:/backup/
       - pgdata:/var/lib/postgresql/data

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '../store'
-import { login, logout } from '../store/authSlice'
+import { login, logout } from '../store/auth/authSlice'
+import { refreshTokenThunk } from '../store/auth/authThunks'
 
 const ApiRequest = axios.create({
 	baseURL: '/api',
@@ -28,15 +29,30 @@ ApiRequest.interceptors.response.use(
 			const accessToken = newToken.split(' ')[1]
 
 			localStorage.setItem('accessToken', accessToken)
-
 			store.dispatch(login(accessToken))
 		}
 
 		return response
 	},
-	error => {
-		if (error.response && error.response.status === 401) {
-			store.dispatch(logout())
+	async error => {
+		const originalRequest = error.config
+
+		if (
+			error.response &&
+			error.response.status === 401 &&
+			!originalRequest._retry
+		) {
+			originalRequest._retry = true
+
+			try {
+				const accessToken = await store.dispatch(refreshTokenThunk()).unwrap()
+
+				originalRequest.headers['Authorization'] = `Bearer ${accessToken}`
+				return ApiRequest(originalRequest)
+			} catch (err) {
+				store.dispatch(logout())
+				return Promise.reject(err)
+			}
 		}
 
 		return Promise.reject(error)

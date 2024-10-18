@@ -11,10 +11,10 @@ const useRegister = () => {
 		setError(null)
 
 		try {
-			const response = await ApiService.auth.login(email, password)
+			const response = await ApiService.auth.register(email, password)
 
 			const { token } = response.data
-			localStorage.setItem('access_token', token)
+			localStorage.setItem('accessToken', token)
 		} catch (e: unknown) {
 			if (axios.isAxiosError(e)) {
 				if (e.response) {
