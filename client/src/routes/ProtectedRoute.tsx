@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
+import CabinetLayout from '../layouts/CabinetLayout/CabinetLayout'
 import { RootState } from '../store'
 
 const PrivateRoute: FC = () => {
@@ -8,7 +9,13 @@ const PrivateRoute: FC = () => {
 		(state: RootState) => state.auth.isAuthenticated
 	)
 
-	return isAuthenticated ? <Outlet /> : <Navigate to='/login' />
+	return isAuthenticated ? (
+		<CabinetLayout>
+			<Outlet />
+		</CabinetLayout>
+	) : (
+		<Navigate to='/login' />
+	)
 }
 
 export default PrivateRoute
