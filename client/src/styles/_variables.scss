@@ -11,14 +11,17 @@ $colors: (
 	'white': #fff,
 	'black': #000,
 	'indigo-dark': #191d3a,
-	'gray-light': #E0E2E9,
-	'gray-dark': #9393A0,
+	'gray-light': #e0e2e9,
+	'gray-dark': #9393a0,
 	'purple-grade': #852876,
-	'pale-pinkish': #E7D4E4,
+	'purple-dark-grade': #5d145f,
+	'pale-pinkish': #e7d4e4,
+	'slate-blue': #474a61,
+	'pale-lavender': #e7ecf9,
+	'bluish-gray': #9ca3af,
 );
 
-
-// TEXT
+// text
 $text: var(--lb-white);
 $text_input: var(--lb-indigo-dark);
 $text_accent: var(--lb-purple-grade);
@@ -32,4 +35,15 @@ $border_accent: 2px solid var(--lb-purple-grade);
 $dropdown_background_clr: var(--lb-pale-pinkish);
 $dropdown_border_accent: 1px solid var(--lb-purple-grade);
 
+// cabinet
+$text_main: var(--lb-black);
+$text_accent: var(--lb-purple-grade);
+$text_pale: var(--lb-bluish-gray);
 
+$background_accent: var(--lb-pale-pinkish);
+
+// header
+$background_header_plus_icon: var(--lb-slate-blue);
+$background_header_user_icon: var(--lb-pale-lavender);
+
+$svg_accent: var(--lb-white);

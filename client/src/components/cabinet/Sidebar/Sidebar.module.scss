@@ -1,0 +1,108 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	width: 256px;
+	transition: width 0.3s ease, padding 0.3s ease;
+	overflow: hidden;
+
+	&.hidden {
+		width: 56px;
+		white-space: nowrap;
+	}
+}
+
+.hidden {
+	.logo {
+		padding: 0;
+		margin: 0 auto;
+
+		span {
+			margin: 0;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+	}
+
+	.button {
+		svg {
+			transform: rotate(180deg);
+		}
+
+		span {
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+	}
+}
+
+.logo {
+	padding: 16px;
+	min-height: 81px;
+	display: flex;
+	align-items: center;
+	font-size: 40px;
+	cursor: pointer;
+	transition: padding 0.3s ease;
+	color: $text_main;
+	text-decoration: none;
+
+	svg {
+		flex-shrink: 0;
+		width: 36px;
+		height: 36px;
+		transition: width 0.3s ease, height 0.3s ease;
+	}
+
+	span {
+		margin-left: 10px;
+		opacity: 1;
+		transition: opacity 0.3s ease;
+	}
+
+	.sidebar.hidden & span {
+		opacity: 0;
+		width: 0;
+		overflow: hidden;
+		transition: opacity 0.3s ease, width 0.3s ease;
+	}
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1 0 0;
+	padding: 32px 0;
+}
+
+.button {
+	min-height: 20px;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	gap: 16px;
+	margin: 0 auto;
+	background-color: transparent;
+	border: none;
+	transition: transform 0.3s ease;
+	white-space: nowrap;
+
+	svg {
+		flex-shrink: 0;
+		width: 12px;
+		height: 9px;
+		transition: transform 0.3s ease;
+	}
+
+	span {
+		opacity: 1;
+		transition: opacity 0.3s ease;
+	}
+
+	.sidebar.hidden & span {
+		opacity: 0;
+		width: 0;
+		overflow: hidden;
+		transition: opacity 0.3s ease, width 0.3s ease;
+	}
+}

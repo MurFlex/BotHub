@@ -1,0 +1,29 @@
+.user {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+
+	.icon {
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 24px;
+		border-radius: 100%;
+		background-color: $background_header_user_icon;
+	}
+
+	.email {
+		font-size: 21px;
+	}
+
+	.id {
+		font-size: 14px;
+		color: $text_pale;
+	}
+
+	svg {
+		transform: rotate(-90deg);
+	}
+}
