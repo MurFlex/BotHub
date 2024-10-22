@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 35px 15px;
+    font-family: $main-font;
+}
+
+.main_info {
+    display: flex;
+    font-family: inherit;
+    align-items: center;
+}
+
+.label_text {
+    display: block;
+    padding-right: 40px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.navigation {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.buttons_block {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.button {
+    // flex: 1;
+}

@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import DropdownMenu from '../../components/base/DropdownMenu/DropdownMenu'
 import { IItem } from '../../components/base/DropdownMenu/MenuItem/MenuItem.props'
+import Header from '../../components/base/Header/Header'
 
 const Home: FC = () => {
 	const items: IItem[] = [
@@ -11,8 +12,9 @@ const Home: FC = () => {
 	]
 	return (
 		<>
+			<Header label='header' />
 			<h1>Home</h1>
-			<DropdownMenu label={'Выбор страницы'} items={items} />
+			{/* <DropdownMenu label={'Выбор страницы'} items={items} /> */}
 		</>
 	)
 }

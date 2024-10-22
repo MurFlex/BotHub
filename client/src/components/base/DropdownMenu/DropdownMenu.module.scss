@@ -15,7 +15,7 @@
 }
 
 .dropdown__list {
-  position: absolute;
+  // position: absolute;
   display: none;
   margin: 0;
   float: inline-start;
@@ -31,10 +31,14 @@
 .dropdown__padding {
   padding-top: 10px;
   display: none;
+  position: absolute;
 }
 
 
-.dropdown:hover .dropdown__list, .dropdown__padding {
+.dropdown:hover .dropdown__list {
   display: block;
 }
 
+.dropdown:hover .dropdown__padding {
+  display: block;
+}

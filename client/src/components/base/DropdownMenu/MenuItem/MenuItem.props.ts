@@ -6,5 +6,5 @@ export interface IMenuItemProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface IItem {
     label: string;
-    value: string
+    link: string;
 }
