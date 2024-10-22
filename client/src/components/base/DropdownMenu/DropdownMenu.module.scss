@@ -34,7 +34,10 @@
 }
 
 
-.dropdown:hover .dropdown__list, .dropdown__padding {
+.dropdown:hover .dropdown__list {
   display: block;
 }
 
+.dropdown:hover .dropdown__padding {
+  display: block;
+}
