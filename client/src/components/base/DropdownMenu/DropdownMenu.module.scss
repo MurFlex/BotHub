@@ -15,7 +15,7 @@
 }
 
 .dropdown__list {
-  position: absolute;
+  // position: absolute;
   display: none;
   margin: 0;
   float: inline-start;
@@ -31,6 +31,7 @@
 .dropdown__padding {
   padding-top: 10px;
   display: none;
+  position: absolute;
 }
 
 

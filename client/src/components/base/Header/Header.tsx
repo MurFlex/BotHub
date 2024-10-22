@@ -11,13 +11,13 @@ return (
         <div className={styles.main_info}>
             <span className={styles.label_text}>BotHub</span>
             <nav className={styles.navigation}>
-                <DropdownMenu label={'Возможности'} items={[]} />
-                <DropdownMenu label={'Цены'} items={[]} />
-                <DropdownMenu label={'Услуги'} items={[]} />
-                <DropdownMenu label={'Полезное'} items={[]} />
-                <DropdownMenu label={'О нас'} items={[]} />
-                <DropdownMenu label={'Блог'} items={[]} />
-                <DropdownMenu label={'Школа'} items={[]} />
+                <DropdownMenu label={'Возможности'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'Цены'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'Услуги'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'Полезное'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'О нас'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'Блог'} items={[{label: '1', link: '/'}]} />
+                <DropdownMenu label={'Школа'} items={[{label: '1', link: '/'}]} />
             </nav>
         </div>
         <div className={styles.buttons_block}>
