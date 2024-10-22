@@ -45,7 +45,7 @@ const authMiddleware = async (
 
 				if (!user || user.refresh_token !== refreshToken) {
 					// TODO: Нужно сделать таблицу с токенами, сделать крон на удаление невалидных токенов, чтобы один аккаунт мог иметь несколько токенов, т.к. человек может зайти с разных устройств
-					return res.status(403).json({ message: 'Ошибка токена' }) // TODO: Нужно вывести эту ошибку
+					return res.status(401).json({ message: 'Ошибка токена' })
 				}
 
 				const tokens = getTokenPair(userId)
@@ -70,10 +70,10 @@ const authMiddleware = async (
 					return next()
 				}
 			} catch (refreshError) {
-				return res.status(403).json(refreshError)
+				return res.status(401).json(refreshError)
 			}
 		} else {
-			return res.status(403).json({ message: 'Ошибка токена' })
+			return res.status(401).json({ message: 'Ошибка токена' })
 		}
 		res.json(err)
 	}

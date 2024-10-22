@@ -5,6 +5,7 @@ import authMiddleware from './middleware/auth.middleware'
 import { errorHandler, notFound } from './middleware/error.middleware'
 import prisma from './prisma'
 import AuthRoutes from './routes/AuthRoutes'
+import UserRoutes from "./routes/UserRoutes";
 
 dotenv.config()
 
@@ -18,14 +19,7 @@ async function main() {
 
 	app.use('/auth/', AuthRoutes)
 
-	// protected test
-	app.get('/protected/', authMiddleware, (req: Request, res: Response) => {
-		res.json(req.user)
-	})
-
-	app.get('/health-check/', (req: Request, res: Response) => {
-		res.send('Heathy!')
-	})
+	app.use('/cabinet/', authMiddleware, UserRoutes)
 
 	app.use(notFound)
 	app.use(errorHandler)

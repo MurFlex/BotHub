@@ -12,10 +12,6 @@ const loadAuthStore = async () => {
 	if (token) {
 		store.dispatch(login(token))
 	} else {
-		try {
-			await store.dispatch(refreshTokenThunk()).unwrap()
-		} catch (error) {
-			console.error('Failed to refresh token on startup:', error)
-		}
+		await store.dispatch(refreshTokenThunk()).unwrap()
 	}
 }

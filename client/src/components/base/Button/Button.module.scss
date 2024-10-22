@@ -8,6 +8,7 @@
 	border: 0;
 	background-color: transparent;
 	transition: background-color 0.3s, color 0.3s ease;
+	cursor: pointer;
 }
 
 .default:hover {
@@ -20,5 +21,5 @@
 }
 
 .accent:hover {
-	background-color: darken($text_accent, 25%);
+	background-color: $text_accent_dark;
 }

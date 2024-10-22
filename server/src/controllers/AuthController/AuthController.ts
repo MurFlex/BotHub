@@ -109,7 +109,7 @@ class AuthController extends AbstractController {
 			const refreshToken = req.cookies.refresh_token
 
 			if (!refreshToken) {
-				throw new UnauthorizedException('Refresh token is missing.')
+				throw new BadRequestException('Refresh token is missing.')
 			}
 
 			const decoded = jwt.verify(
@@ -120,7 +120,7 @@ class AuthController extends AbstractController {
 			const user = await UserModel.getUserById(decoded.userId)
 
 			if (!user) {
-				throw new UnauthorizedException('Invalid refresh token.')
+				throw new BadRequestException('Invalid refresh token.')
 			}
 
 			const tokens = getTokenPair(user.id)

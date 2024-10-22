@@ -5,11 +5,17 @@ import {
 	IUserUpdate,
 } from '../types/user.interface'
 import { AbstractModel } from './AbstractModel'
+import UnauthorizedException from "../exceptions/UnauthorizedException";
+import badRequestException from "../exceptions/BadRequestException";
 
 class UserModel extends AbstractModel {
 	private model = this.prisma.user
 
-	public formatUserForResponse(user: IUser): IUserResponse {
+	public formatUserForResponse(user: IUser | null): IUserResponse {
+		if(!user) {
+			throw new badRequestException()
+		}
+
 		const { password, createdAt, updatedAt, refresh_token, ...formattedUser } =
 			user
 
