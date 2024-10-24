@@ -15,15 +15,9 @@ const uiSlice = createSlice({
 		toggleSidebar(state) {
 			state.isSidebarHidden = !state.isSidebarHidden
 		},
-		showText(state) {
-			state.isSidebarHidden = false
-		},
-		hideText(state) {
-			state.isSidebarHidden = true
-		},
 	},
 })
 
-export const { toggleSidebar, showText, hideText } = uiSlice.actions
+export const { toggleSidebar} = uiSlice.actions
 
 export default uiSlice.reducer

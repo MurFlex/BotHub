@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { refreshTokenThunk } from './authThunks'
+import { refreshTokenThunk, fetchUserDataThunk } from './authThunks'
 
 interface User {
 	id: number
@@ -27,11 +27,12 @@ const authSlice = createSlice({
 	reducers: {
 		login: (state, action: PayloadAction<string>) => {
 			state.isAuthenticated = true
-			state.accessToken = action.payload // TODO: Добавить присвоение юзера с сервера
+			state.accessToken = action.payload
 		},
 		logout: state => {
 			state.isAuthenticated = false
 			state.accessToken = null
+			state.user = null
 		},
 	},
 	extraReducers: builder => {
@@ -39,19 +40,22 @@ const authSlice = createSlice({
 			.addCase(refreshTokenThunk.pending, state => {
 				state.refreshTokenLoading = true
 			})
-			.addCase(
-				refreshTokenThunk.fulfilled,
-				(state, action: PayloadAction<string>) => {
-					state.isAuthenticated = true
-					state.accessToken = action.payload
-					state.refreshTokenLoading = false
-				}
-			)
+			.addCase(refreshTokenThunk.fulfilled, (state, action: PayloadAction<string>) => {
+				state.isAuthenticated = true
+				state.accessToken = action.payload
+				state.refreshTokenLoading = false
+			})
 			.addCase(refreshTokenThunk.rejected, state => {
 				state.isAuthenticated = false
 				state.accessToken = null
 				state.user = null
 				state.refreshTokenLoading = false
+			})
+			.addCase(fetchUserDataThunk.fulfilled, (state, action: PayloadAction<User>) => {
+				state.user = action.payload
+			})
+			.addCase(fetchUserDataThunk.rejected, (state) => {
+				state.user = null
 			})
 	},
 })

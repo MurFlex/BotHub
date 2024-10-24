@@ -1,15 +1,10 @@
 import { Request, Response, Router } from 'express'
 import AuthController from '../controllers/AuthController/AuthController'
 import { getTokenPair } from '../utils/token-generator'
+import UserController from "../controllers/AuthController/UserController";
 
 const router = Router()
 
-router.post('/login', AuthController.login)
-
-router.post('/register', AuthController.register)
-
-router.get('/check-email', AuthController.checkEmailFree)
-
-router.get('/refresh-token', AuthController.refreshToken)
+router.get('/user', UserController.getProfile)
 
 export default router

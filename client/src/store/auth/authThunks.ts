@@ -22,3 +22,16 @@ export const refreshTokenThunk = createAsyncThunk(
 		}
 	}
 )
+
+export const fetchUserDataThunk = createAsyncThunk(
+	'auth/fetchUserData',
+	async (_, { rejectWithValue }) => {
+		try {
+			return await ApiService.user.getUserData()
+		} catch (error) {
+			console.error(error)
+
+			return rejectWithValue('Failed to fetch user data')
+		}
+	}
+)
