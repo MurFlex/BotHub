@@ -6,6 +6,9 @@ import { errorHandler, notFound } from './middleware/error.middleware'
 import prisma from './prisma'
 import AuthRoutes from './routes/AuthRoutes'
 import UserRoutes from "./routes/UserRoutes";
+import {handleValidationErrors, validationMiddleware} from "./middleware/validation.middleware";
+import {authValidation} from "./validation/authValidation";
+import {errors} from "celebrate";
 
 dotenv.config()
 
@@ -17,11 +20,13 @@ async function main() {
 	app.use(cookieParser())
 	app.use(express.json())
 
-	app.use('/auth/', AuthRoutes)
+	app.use('/auth/', validationMiddleware(authValidation), AuthRoutes)
 
 	app.use('/cabinet/', authMiddleware, UserRoutes)
 
 	app.use(notFound)
+	app.use(handleValidationErrors);
+	app.use(errors());
 	app.use(errorHandler)
 
 	app.listen(port, () => {
@@ -30,7 +35,6 @@ async function main() {
 }
 
 main()
-	// TODO: Uncomment when first migration ready
 	.then(async () => {
 		await prisma.$disconnect()
 	})

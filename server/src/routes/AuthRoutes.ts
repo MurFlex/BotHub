@@ -1,14 +1,15 @@
 import { Request, Response, Router } from 'express'
 import AuthController from '../controllers/AuthController/AuthController'
-import { getTokenPair } from '../utils/token-generator'
+import {validationMiddleware} from "../middleware/validation.middleware";
+import {authValidation, checkEmailValidation} from "../validation/authValidation";
 
 const router = Router()
 
-router.post('/login', AuthController.login)
+router.post('/login', validationMiddleware(authValidation), AuthController.login)
 
-router.post('/register', AuthController.register)
+router.post('/register', validationMiddleware(authValidation), AuthController.register)
 
-router.get('/check-email', AuthController.checkEmailFree)
+router.get('/check-email', validationMiddleware(checkEmailValidation), AuthController.checkEmailFree)
 
 router.get('/refresh-token', AuthController.refreshToken)
 
