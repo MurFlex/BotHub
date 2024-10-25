@@ -2,8 +2,8 @@ import { login } from './auth/authSlice'
 import { refreshTokenThunk } from './auth/authThunks'
 import store from './index'
 
-export const loadStore = () => {
-	loadAuthStore()
+export const loadStore = async () => {
+	await loadAuthStore()
 }
 
 const loadAuthStore = async () => {
