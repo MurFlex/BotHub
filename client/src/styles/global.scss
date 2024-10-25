@@ -1,6 +1,10 @@
-@import 'variables.scss';
-@import 'mixins.scss';
-@import 'fonts.scss';
+@use 'fonts' as *;
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@forward "fonts";
+@forward "mixins";
+@forward 'variables';
 
 :root {
 	@each $name, $color in $colors {
