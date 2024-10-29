@@ -1,0 +1,43 @@
+.tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #EEEFF1;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.tab {
+  text-decoration: none;
+  color: $text-main;
+  padding: 4px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.activeTab {
+  color: $text_accent;
+
+  &::after {
+    width: 100%;
+    background-color: $text_accent;
+  }
+}
+
+.underline {
+  position: absolute;
+  bottom: -1px;
+  height: 2px;
+  background-color: $text_accent;
+  transition: all 0.3s ease;
+}

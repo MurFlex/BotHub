@@ -19,6 +19,7 @@ $colors: (
 	'slate-blue': #474a61,
 	'pale-lavender': #e7ecf9,
 	'bluish-gray': #9ca3af,
+	'pale-gray': #eeeff1,
 );
 
 // text
@@ -31,6 +32,8 @@ $text_grey: var(--lb-gray-dark);
 //borders
 $border_input: 2px solid var(--lb-gray-light);
 $border_accent: 2px solid var(--lb-purple-grade);
+$border_accent_thin: 1px solid var(--lb-purple-grade);
+$frame_gray: 1px solid var(--lb-pale-gray);
 
 // background dropdown
 $dropdown_background_clr: var(--lb-pale-pinkish);

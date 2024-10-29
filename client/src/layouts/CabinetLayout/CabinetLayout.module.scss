@@ -6,9 +6,14 @@
 }
 
 .wrap {
+	display: flex;
+	flex-direction: column;
 	flex: 1 0 0;
 }
 
 .content {
-	padding: 24px 24px 0 24px;
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 0;
+	padding: 32px;
 }
