@@ -7,26 +7,24 @@ const Home = lazy(() => import('../pages/Home'))
 const NotFound = lazy(() => import('../pages/NotFound'))
 const Profile = lazy(() => import('../pages/Profile'))
 
-const AppRoutes: FC = () => {
-	return (
-		<Router>
-			<Routes>
-				{/* Публичные роуты */}
-				<Route path='/' element={<Home />} />
-				<Route path='/login/' element={<Login />} />
-				<Route path='/register/' element={<Login />} />
+const AppRoutes: FC = () => (
+    <Router>
+        <Routes>
+            {/* Публичные роуты */}
+            <Route path='/' element={<Home />} />
+            <Route path='/login/' element={<Login />} />
+            <Route path='/register/' element={<Login />} />
 
-				{/* Защищенные роуты */}
-				<Route path='/cabinet/*' element={<ProtectedRoute />}>
-					<Route path='' element={<Profile />} />
-					<Route path='*' element={<NotFound />} />
-				</Route>
+            {/* Защищенные роуты */}
+            <Route path='/cabinet/*' element={<ProtectedRoute />}>
+                <Route path='' element={<Profile />} />
+                <Route path='*' element={<NotFound />} />
+            </Route>
 
-				{/* Остальные роуты */}
-				<Route path='*' element={<NotFound />} />
-			</Routes>
-		</Router>
-	)
-}
+            {/* Остальные роуты */}
+            <Route path='*' element={<NotFound />} />
+        </Routes>
+    </Router>
+)
 
 export default AppRoutes

@@ -5,24 +5,44 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
-  {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+    {ignores: ['dist']},
+    {
+        extends: [js.configs.recommended, ...tseslint.configs.recommended],
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: {
+            ecmaVersion: 2020,
+            globals: globals.browser,
+        },
+        plugins: {
+            'react-hooks': reactHooks,
+            'react-refresh': reactRefresh,
+        },
+        rules: {
+            ...reactHooks.configs.recommended.rules,
+            'react-refresh/only-export-components': [
+                'warn',
+                {allowConstantExport: true},
+            ],
+            'semi': ['error', 'never'],
+            'comma-dangle': ['error', 'never'],
+            'indent': ['error', 4],
+            "quotes": ["error", "single"],
+            'object-curly-spacing': ['error', 'always'],
+            'array-bracket-spacing': ['error', 'never'],
+            'key-spacing': ['error', {
+                'beforeColon': false,
+                'afterColon': true
+            }],
+            'space-infix-ops': 'error',
+            'no-unused-vars': ['warn', {
+                'args': 'none',
+                'ignoreRestSiblings': true
+            }],
+            'prefer-const': 'error',
+            'no-var': 'error',
+            'no-duplicate-imports': 'error',
+            'prefer-template': 'error',
+            'arrow-body-style': ['error', 'as-needed'],
+        },
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
-  },
 )
