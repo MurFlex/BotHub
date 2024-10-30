@@ -1,4 +1,4 @@
-import ApiRequest from "../../configs/ApiRequest.ts";
+import ApiRequest from '../../configs/ApiRequest.ts'
 
 interface User {
     id: number

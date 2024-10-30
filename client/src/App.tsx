@@ -6,30 +6,30 @@ import store from './store'
 import { loadStore } from './store/storeLoader'
 
 const App: FC = () => {
-	const [isStoreLoaded, setIsStoreLoaded] = useState(false)
+    const [isStoreLoaded, setIsStoreLoaded] = useState(false)
 
-	useEffect(() => {
-		const initializeStore = async () => {
-			await loadStore()
-			setIsStoreLoaded(true)
-		}
+    useEffect(() => {
+        const initializeStore = async () => {
+            await loadStore()
+            setIsStoreLoaded(true)
+        }
 
-		initializeStore()
-	}, [])
+        initializeStore()
+    }, [])
 
-	if (!isStoreLoaded) {
-		return <div>Загрузка</div> /* TODO: заменить лоадером */
-	}
+    if (!isStoreLoaded) {
+        return <div>Загрузка</div> /* TODO: заменить лоадером */
+    }
 
-	return (
-		<>
-			<SvgSprite />
-			{/* SvgSprite потом убрать, использовать только там, где он нужен */}
-			<Provider store={store}>
-				<AppRoutes />
-			</Provider>
-		</>
-	)
+    return (
+        <>
+            <SvgSprite />
+            {/* SvgSprite потом убрать, использовать только там, где он нужен */}
+            <Provider store={store}>
+                <AppRoutes />
+            </Provider>
+        </>
+    )
 }
 
 export default App
