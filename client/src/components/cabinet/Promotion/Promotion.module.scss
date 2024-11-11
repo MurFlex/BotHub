@@ -1,0 +1,25 @@
+.promotion {
+  position: relative;
+  padding: 32px;
+  background-color: #EEEFF1;
+  border-radius: 23px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  color: $text-main;
+  margin-bottom: 16px;
+}
+
+.text {
+  color: #757789;
+  font-size: 16px;
+  max-width: 600px;
+}
+
+.exit {
+  position: absolute;
+  right: 30px;
+  top: 28px;
+}

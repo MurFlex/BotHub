@@ -1,0 +1,15 @@
+.templates {
+  flex: 1 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 27px;
+  overflow: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.templates::-webkit-scrollbar {
+  display: none;
+}
