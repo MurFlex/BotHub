@@ -14,6 +14,10 @@ export const errorHandler = (
 	res: Response,
 	next: NextFunction
 ) => {
+	if (res.headersSent) {
+		return next(err);
+	}
+
 	const statusCode = err instanceof AbstractException ? err.statusCode : 500
 
 	res.status(statusCode)
