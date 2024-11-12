@@ -24,7 +24,7 @@ const authMiddleware = async (
 
 		if (user) {
 			req.user = UserModel.formatUserForResponse(user)
-			next()
+			return next()
 		}
 	} catch (err: any) {
 		if (err.name === 'TokenExpiredError') {

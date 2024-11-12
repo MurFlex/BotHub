@@ -9,6 +9,7 @@ class UserController extends AbstractController {
         async (req: Request, res: Response): Promise<void> => {
             if(req.user) {
                 this.sendSuccess(res, req.user)
+                return 
             }
 
             throw new UnauthorizedException()
