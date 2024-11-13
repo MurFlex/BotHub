@@ -1,7 +1,5 @@
 import { Request, Response, Router } from 'express'
-import AuthController from '../controllers/AuthController/AuthController'
-import { getTokenPair } from '../utils/token-generator'
-import UserController from "../controllers/AuthController/UserController";
+import UserController from "../controllers/UserController/UserController";
 
 const router = Router()
 

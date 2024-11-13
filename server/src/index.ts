@@ -9,6 +9,7 @@ import UserRoutes from "./routes/UserRoutes";
 import {handleValidationErrors, validationMiddleware} from "./middleware/validation.middleware";
 import {authValidation} from "./validation/authValidation";
 import {errors} from "celebrate";
+import BotRoutes from './routes/BotRoutes'
 
 dotenv.config()
 
@@ -21,7 +22,7 @@ async function main() {
 	app.use(express.json())
 
 	app.use('/auth/', validationMiddleware(authValidation), AuthRoutes)
-
+	app.use('/bot/', BotRoutes) // TODO: TEMP
 	app.use('/cabinet/', authMiddleware, UserRoutes)
 
 	app.use(notFound)
