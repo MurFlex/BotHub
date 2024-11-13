@@ -1,7 +1,6 @@
 import {AbstractController} from "../AbstractController";
 import asyncHandler from "express-async-handler";
 import {Request, Response} from "express";
-import UserModel from "../../models/UserModel";
 import UnauthorizedException from "../../exceptions/UnauthorizedException";
 
 class UserController extends AbstractController {
