@@ -1,6 +1,6 @@
-import { AbstractController } from "../AbstractController";
-import asyncHandler from "express-async-handler";
-import { Request, Response } from "express";
+import { AbstractController } from '../AbstractController'
+import asyncHandler from 'express-async-handler'
+import { Request, Response } from 'express'
 import BotService from '../../services/BotService'
 
 class BotController extends AbstractController {

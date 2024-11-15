@@ -4,7 +4,8 @@
 	"main": "src/index.ts",
 	"license": "MIT",
 	"scripts": {
-		"dev": "nodemon -L src/index.ts"
+		"dev": "nodemon -L src/index.ts",
+		"lint:fix": "eslint . --fix"
 	},
 	"nodemonConfig": {
 		"verbose": true,
@@ -34,9 +35,14 @@
 		"@types/jsonwebtoken": "^9.0.6",
 		"@types/node": "^22.4.1",
 		"@types/node-telegram-bot-api": "^0.64.7",
+		"@typescript-eslint/eslint-plugin": "^8.14.0",
+		"@typescript-eslint/parser": "^8.14.0",
+		"eslint": "^9.14.0",
 		"express-async-handler": "^1.2.0",
+		"globals": "^15.12.0",
 		"nodemon": "^3.1.4",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.14.0"
 	}
 }

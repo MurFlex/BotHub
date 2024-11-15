@@ -1,7 +1,7 @@
-import {AbstractController} from "../AbstractController";
-import asyncHandler from "express-async-handler";
-import {Request, Response} from "express";
-import UnauthorizedException from "../../exceptions/UnauthorizedException";
+import { AbstractController } from '../AbstractController'
+import asyncHandler from 'express-async-handler'
+import { Request, Response } from 'express'
+import UnauthorizedException from '../../exceptions/UnauthorizedException'
 
 class UserController extends AbstractController {
     public getProfile = asyncHandler(

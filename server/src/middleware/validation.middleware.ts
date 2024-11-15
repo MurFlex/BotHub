@@ -1,21 +1,19 @@
-import { celebrate, Joi, Segments } from 'celebrate';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express'
+import { ValidationError } from 'joi'
 
-export const validationMiddleware = (schema: object) => {
-    return celebrate(schema, {
-        abortEarly: false
-    })
-}
-
-export const handleValidationErrors = (err: any, req: Request, res: Response, next: NextFunction) => {
-    if (err.joi) {
-
-        const errors = err.joi.details.map((error: any) => ({
-            field: error.context.key,
-            message: error.message,
-        }));
-        return res.status(400).json({ errors });
+export const handleValidationErrors = (
+    err: ValidationError,
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (err.isJoi) {
+        const errors = err.details.map(error => ({
+            field: error.context?.key ?? 'unknown',
+            message: error.message
+        }))
+        return res.status(400).json({ errors })
     }
 
-    next(err);
-};
+    next(err)
+}
