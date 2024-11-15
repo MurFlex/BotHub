@@ -1,4 +1,4 @@
-import {IUserResponse} from "./user.interface";
+import { IUserResponse } from './user.interface'
 
 declare global {
 	namespace Express {

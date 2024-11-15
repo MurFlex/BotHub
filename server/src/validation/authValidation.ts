@@ -1,4 +1,4 @@
-import { Joi, Segments } from 'celebrate';
+import { Joi, Segments } from 'celebrate'
 
 const config = {
     passwordMin: 6
@@ -13,10 +13,10 @@ export const checkEmailValidation = {
     [Segments.QUERY]: Joi.object({
         email: Joi.string().email().required().messages({
             'string.email': errorMessages.EMAIL,
-            'any.required': 'Поле email обязательно',
-        }),
-    }),
-};
+            'any.required': 'Поле email обязательно'
+        })
+    })
+}
 
 export const authValidation = {
     [Segments.BODY]: Joi.object().keys({
@@ -27,6 +27,6 @@ export const authValidation = {
         password: Joi.string().min(config.passwordMin).required().messages({
             'string.min': errorMessages.PASSWORD,
             'any.required': 'Поле пароль обязательно'
-        }),
-    }),
-};
+        })
+    })
+}

@@ -1,5 +1,5 @@
 export interface IUser {
-	id: Number
+	id: number
 	email: string
 	password: string
 	refresh_token?: string
@@ -12,16 +12,16 @@ export interface IUserCreate {
 	password: string
 }
 
-export interface IUserUpdate extends Omit<IUser, 'createdAt, updatedAt'> {}
+export type IUserUpdate = Omit<IUser, 'createdAt, updatedAt'>
 
 export interface IUserSearch {
-	id?: Number
+	id?: number
 	email?: string
 	name?: string
 }
 
 export interface IUserResponse {
-	id?: Number
+	id?: number
 	email?: string
 	name?: string
 }
