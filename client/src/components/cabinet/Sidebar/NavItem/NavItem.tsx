@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { RootState } from '../../../../store'
+import { RootState } from '@/store'
 import { INavItem } from '../types'
 import styles from './NavItem.module.scss'
 

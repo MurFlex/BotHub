@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
-import Auth from '../../components/cabinet/Auth'
-import { RootState } from '../../store'
+import Auth from '@/components/cabinet/Auth'
+import { RootState } from '@/store'
 import styles from './Auth.module.scss'
 
 const Login: FC = () => {

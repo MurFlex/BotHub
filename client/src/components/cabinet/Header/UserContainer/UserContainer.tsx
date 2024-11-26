@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styles from './UserContainer.module.scss'
-import { RootState } from '../../../../store'
+import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
 const UserContainer: FC = () => {
