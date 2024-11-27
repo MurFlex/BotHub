@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import ApiService from '../../../../service/ApiService/ApiService'
+import ApiService from '@/service/ApiService/ApiService'
 
 const useRegister = () => {
     const [loading, setLoading] = useState(false)

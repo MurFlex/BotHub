@@ -1,9 +1,9 @@
 import { FC, Suspense, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Header from '../../components/cabinet/Header/Header'
-import Sidebar from '../../components/cabinet/Sidebar/Sidebar'
-import { AppDispatch, RootState } from '../../store'
-import { fetchUserDataThunk } from '../../store/auth/authThunks'
+import Header from '@/components/cabinet/Header/Header'
+import Sidebar from '@/components/cabinet/Sidebar/Sidebar'
+import { AppDispatch, RootState } from '@/store'
+import { fetchUserDataThunk } from '@/store/auth/authThunks'
 import styles from './CabinetLayout.module.scss'
 import { CabinetLayoutProps } from './CabinetLayout.props'
 const CabinetLayout: FC<CabinetLayoutProps> = ({ children }) => {
