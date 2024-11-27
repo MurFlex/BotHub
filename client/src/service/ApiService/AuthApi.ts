@@ -1,4 +1,4 @@
-import ApiRequest from '../../configs/ApiRequest'
+import ApiRequest from '@/configs/ApiRequest'
 
 class AuthApi {
     public async login(email: string, password: string) {

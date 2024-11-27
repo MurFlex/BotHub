@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import ApiService from '../../service/ApiService/ApiService'
+import ApiService from '@/service/ApiService/ApiService'
 import { login, logout } from './authSlice'
 
 export const refreshTokenThunk = createAsyncThunk(
