@@ -1,18 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { refreshTokenThunk, fetchUserDataThunk } from './authThunks'
-
-interface User {
-	id: number
-	email: string
-	name: string
-}
-
-interface AuthState {
-	isAuthenticated: boolean
-	accessToken: string | null
-	refreshTokenLoading: boolean
-	user: User | null
-}
+import { User, AuthState } from './types'
 
 const initialState: AuthState = {
     isAuthenticated: false,

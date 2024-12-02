@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import styles from './Input.module.scss'
-import { InputProps } from './Input.props'
+import { InputProps } from './types'
 
 const Input: FC<InputProps> = ({ text, name, ...props }) => (
     <div>

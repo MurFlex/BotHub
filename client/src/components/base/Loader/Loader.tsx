@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import styles from './Loader.module.scss'
-import { LoaderProps } from './Loader.props'
+import { LoaderProps } from './types'
 
 const Loader = ({ appearance = 'default' }: LoaderProps) => (
     <div className={styles.wrapper}>

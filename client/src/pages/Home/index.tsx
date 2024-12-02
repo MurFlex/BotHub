@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import DropdownMenu from '@/components/base/DropdownMenu/DropdownMenu'
-import { IItem } from '@/components/base/DropdownMenu/MenuItem/MenuItem.props'
+import { IItem } from '@/components/base/DropdownMenu/MenuItem/types'
 
 const Home: FC = () => {
     const items: IItem[] = [

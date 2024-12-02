@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { FC } from 'react'
 import styles from './Button.module.scss'
-import { ButtonProps } from './Button.props'
+import { ButtonProps } from './types'
 
 const Button: FC<ButtonProps> = ({
     children,
