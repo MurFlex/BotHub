@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { PromotionProps } from '@/components/cabinet/Promotion/types.ts'
+import { PromotionProps } from './types.ts'
 import styles from './Promotion.module.scss'
 
 const Promotion: FC<PromotionProps> = ({ title, text }) => {

@@ -1,10 +1,6 @@
 import ApiRequest from '@/configs/ApiRequest.ts'
 
-interface User {
-    id: number
-    email: string
-    name: string
-}
+import { User } from './types'
 
 class AuthApi {
     public async getUserData(): Promise<User> {

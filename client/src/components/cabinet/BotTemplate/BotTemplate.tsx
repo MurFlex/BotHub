@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { BotTemplateProps } from '@/components/cabinet/BotTemplate/types.ts'
+import { BotTemplateProps } from './types.ts'
 import styles from './BotTemplate.module.scss'
 import cn from 'classnames'
 

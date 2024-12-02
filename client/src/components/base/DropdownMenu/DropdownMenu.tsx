@@ -3,7 +3,7 @@ import { FC } from 'react'
 import styles from './DropdownMenu.module.scss'
 import { IDropdownMenuProps } from './DropdownMenu.props.ts'
 import { MenuItem } from './MenuItem/MenuItem.tsx'
-import { IItem } from './MenuItem/MenuItem.props.ts'
+import { IItem } from './MenuItem/types.ts'
 
 const DropdownMenu: FC<IDropdownMenuProps> = ({ label, items }) => (
     <div className={styles.dropdown}>

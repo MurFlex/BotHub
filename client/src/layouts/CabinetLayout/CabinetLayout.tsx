@@ -5,7 +5,7 @@ import Sidebar from '@/components/cabinet/Sidebar/Sidebar'
 import { AppDispatch, RootState } from '@/store'
 import { fetchUserDataThunk } from '@/store/auth/authThunks'
 import styles from './CabinetLayout.module.scss'
-import { CabinetLayoutProps } from './CabinetLayout.props'
+import { CabinetLayoutProps } from './types'
 const CabinetLayout: FC<CabinetLayoutProps> = ({ children }) => {
     const dispatch: AppDispatch = useDispatch()
 

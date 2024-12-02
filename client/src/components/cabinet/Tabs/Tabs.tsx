@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Tabs.module.scss';
-import { TabProps, TabsProps } from '@/components/cabinet/Tabs/types';
+import { TabProps, TabsProps } from './types';
 import cn from 'classnames';
 
 const Tabs: FC<TabsProps> = ({ tabs }) => {
