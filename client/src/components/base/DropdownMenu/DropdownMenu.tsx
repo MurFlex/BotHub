@@ -11,7 +11,7 @@ const DropdownMenu: FC<IDropdownMenuProps> = ({ label, items }) => (
         <div className={styles.dropdown__padding}>
             <ul className={styles.dropdown__list}>
                 {items.map((item: IItem) => (
-                    <MenuItem item={item} />
+                    <MenuItem item={item} key={item.link} />
                 ))}
             </ul>
         </div>
